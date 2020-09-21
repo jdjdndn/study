@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var str = 'my_student_class'
+        var arr = str.split('_')
+        
+        for (var i = 1; i < arr.length; i++) {
+            var first = arr[i].substr(0, 1).toUpperCase()
+            var last = arr[i].substr(1)
+            arr[i]=first+last
+        }
+        var newStr=arr.join('')
+      console.log(newStr)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div')
+
+        div.onmousedown = function (e) {
+            var heziX = e.clientX - div.offsetLeft
+            var heziY = e.clientY - div.offsetTop
+
+            document.onmouseover = function (e) {
+                var l = e.clientX - heziX
+                var t = e.clientY - heziY
+
+                if (l < 0) {
+                    l = 0
+                } else if (l > document.documentElement.clientWidth - div.offsetWidth) {
+                    l = document.documentElement.clientWidth - div.offsetWidth
+                }
+                if (t < 0) {
+                    t = 0
+                } else if (t > document.documentElement.clientHeight - div.offsetHeight) {
+                    t = document.documentElement.clientHeight - div.offsetHeight
+                }
+                div.style.left = l + 'px'
+                div.style.top = t + 'px'
+            }
+            document.onmouseup = function () {
+                document.onmouseover = null
+            }
+        }
+    </script>
+</body>
+
+</html>

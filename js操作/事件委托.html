@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>添加</button>
+    <ul class="oul">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <script>
+        var btn = document.querySelector('button')
+        var oul = document.querySelector('.oul')
+        var lis = oul.querySelectorAll('li')
+        oul.onmouseover = function (e) {
+            e = e || ev
+            if (e.target.nodeName == 'LI') {
+                e.target.style.color = 'red'
+            }
+        }
+        oul.onmouseout = function (e) {
+            e = e || ev
+            if (e.target.nodeName == 'LI') {
+                e.target.style.color = '#000'
+            }
+        }
+        btn.onclick=function(){
+            var random=Math.random()
+            var li=document.createElement('li')
+            li.innerHTML=random
+            oul.appendChild(li)
+        }
+      
+    </script>
+</body>
+
+</html>

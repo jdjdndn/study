@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    //1
+        var arr = [1, 23, 5, 1, 5, 6, 1, 5, 565, 5, 5, 3, 4, 56, 31, 6561, 6, 6, 61, ]
+           var newArr=[]
+           for(var i=0;i<arr.length;i++){
+               if(newArr.indexOf(arr[i])==-1){
+                   newArr.push(arr[i])
+               }
+           }
+           console.log(newArr)
+        //2
+        var obj = {}
+        for (var i = 0; i < arr.length; i++) {
+            if (obj.hasOwnProperty(arr[i])) {
+                obj[arr[i]]++
+            } else {
+                obj[arr[i]] = 1
+            }
+        }
+        
+        // console.log(obj)
+        var max = 0
+        var str = ''
+        for (var k in obj) {
+            // console.log(k,obj[k])
+            if (max < obj[k]) {
+                max = k
+                str = obj[k]
+            }
+        }
+        console.log(`最大值${max},出现最多次数${obj[k]}`)
+    </script>
+</body>
+
+</html>

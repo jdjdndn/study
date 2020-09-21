@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div')
+        document.onkeydown = function (e) {
+            var e = e || ev;
+            switch (e.keyCode) {
+                case 37:
+                    // console.log('左')
+                    div.style.left = div.offsetLeft - 10 + 'px'
+                    break;
+                case 38:
+                    div.style.top = div.offsetTop - 10 + 'px'
+                    break;
+                case 39:
+                    div.style.left = div.offsetLeft + 10 + 'px'
+                    break;
+                case 40:
+                    div.style.top = div.offsetTop + 10 + 'px'
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

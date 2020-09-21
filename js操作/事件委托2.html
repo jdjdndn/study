@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .oul>li {
+            float: left;
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button>添加</button>
+    <ul class="oul">
+        <li>12<a href="javascript:;">删除</a></li>
+        <li>13<a href="javascript:;">删除</a></li>
+        <li>14<a href="javascript:;">删除</a></li>
+        <li>15<a href="javascript:;">删除</a></li>
+        <li>16<a href="javascript:;">删除</a></li>
+    </ul>
+<script>
+        var oul = document.querySelector('.oul')
+        var as = document.querySelectorAll('a')
+
+        for (var i = 0; i < as.length; i++) {
+            oul.onclick = function (e) {
+                if (e.target.nodeName == 'A') {
+                    e.target.parentNode.remove()
+                }
+            }
+        }
+        var btn = document.querySelector('button')
+        btn.onclick = function () {
+            var random = parseInt(Math.random()*100)
+            var li = '<li>' + random + '<a href="javascript:;">删除</a></li>'
+            oul.insertAdjacentHTML('beforeend', li)
+        }
+    </script>
+</body>
+
+</html>
