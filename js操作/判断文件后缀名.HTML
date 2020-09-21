@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" name="" id="">
+    <button>提交</button>
+    <script>
+        //通过截取input.value字符串,用substr方法,取小点后面的字符与常用文件格式做判断
+        var inp = document.querySelector('input')
+        var btn = document.querySelector('button')
+        btn.onclick = function () {
+            var str = inp.value
+            var index = str.indexOf('.')
+            var houzhuiming = str.substr(index + 1)
+            // console.log(houzhuiming)
+            var arr = ['txt', 'md']
+            if (houzhuiming == 'txt' || houzhuiming == 'md') {
+                console.log('上传正确')
+            } else {
+                console.log('上传错误')
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+
+//git@github.com:jiezeal/javascript-oop.git

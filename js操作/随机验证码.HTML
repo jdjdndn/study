@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class='txt'>
+    <span class="code"></span><br>
+    <button class="tijiao">提交</button>
+
+    <script>
+        var txt = document.querySelector('.txt')
+        var code = document.querySelector('.code')
+        var btn = document.querySelector('.tijiao')
+
+        code.innerHTML=suiji()
+        code.onclick = function () {
+            code.innerHTML = suiji()
+        }
+         btn.onclick = function () {
+             if(txt.value==code.innerHTML){
+                location.href='http://www.baidu.com'
+             }else{
+                 console.log('false')
+             }
+         }
+        function suiji() {
+            var str = 'qwertyuiopadsfghjklzxcbvnm123456789'
+            var strCode = ''
+            for (var i = 0; i < 4; i++) {
+                var n = Math.floor(Math.random() * (str.length ))
+                strCode += str[n]
+            }
+            return strCode
+        }
+    </script>
+</body>
+
+</html>

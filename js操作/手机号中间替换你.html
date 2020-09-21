@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body> <input type="text" class="tel" value="18086493256">
+    <input type="button" value="提交" class="btn">
+    <div class="endtel"></div>
+    <script>
+        var tel = document.querySelector('.tel')
+        var btn = document.querySelector('.btn')
+        var endtel = document.querySelector('.endtel')
+
+        btn.onclick = function () {
+           var value = change(tel.value, 3, 4, '*')
+            endtel.innerHTML =value
+        
+        }
+
+        function change(value, start, end, chars) {
+            var len = value.length - start - end
+            var str=''
+            for(var i=0;i<len;i++){
+                str+=chars
+            }
+            return value.slice(0, start) + str + value.slice(-end)
+        }
+    </script>
+</body>
+
+</html>
