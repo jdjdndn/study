@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button>多人运动500</button>
+    <input type="button" value="多人运动800">
+    <div></div>
+    <script>
+        //距离=速度*时间
+        var div = document.querySelector("div");
+        var btn = document.querySelector('button')
+        var inp = document.querySelector('input')
+        btn.onclick = function () {
+            animate(div, 500);
+        }
+        inp.onclick = function () {
+            animate(div, 800);
+        }
+
+        function animate(obj, target, callback) {
+            clearInterval(obj.time);
+            var speed
+            obj.time = setInterval(function () {
+                speed = (target - obj.offsetLeft) / 10;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if (target == obj.offsetLeft) {
+                    clearInterval(obj.time);
+                    callback && callback();
+                } else {
+                    obj.style.left = obj.offsetLeft + speed + "px";
+                }
+            }, 15);
+        }
+    </script>
+</body>
+
+</html>

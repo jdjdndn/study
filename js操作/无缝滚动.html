@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="Zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 ul {
+            list-style: none;
+            height: 100%;
+        }
+
+        .box1 {
+            width: 300px;
+            height: 100px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        .box1 li {
+            float: left;
+            width: 100px;
+            height: 100px;
+        }
+
+        .box2 {
+            width: 100px;
+            height: 300px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        .box2 li {
+            /* float: left; */
+            width: 100px;
+            height: 100px;
+        }
+
+        .box2 ul {
+            list-style: none;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+    <div class="box2">
+        <ul>
+            <li>一</li>
+            <li>二</li>
+            <li>三</li>
+            <li>四</li>
+            <li>五</li>
+        </ul>
+    </div>
+    <script>
+        // var box1 = document.querySelector('.box1')
+        // var oul = box1.querySelector('ul')
+        // var lis = oul.querySelectorAll('li')
+        // var lisLen = lis.length
+        // var index = 0
+        // oul.style.width = lis[0].offsetWidth * lisLen + 'px'
+        // setInterval(function () {
+        //     oul.style.marginLeft = index-- + 'px'
+        //     if (Math.abs(index) >= lis[0].offsetWidth) {
+        //         oul.appendChild(oul.firstElementChild)
+        //         index=0
+        //         oul.style.marginLeft='0px'
+        //     }
+        // }, 50)
+
+        var that
+
+        function Scroll(options) {
+            that = this
+            this.box = document.querySelector(options.box)
+            this.ul = this.box.querySelector('ul')
+            this.lis = this.ul.querySelectorAll('li')
+            this.disc = options.disc
+            this.speed = options.speed
+            this.lisLen = this.lis.length
+            this.index = 0
+            this.init()
+        }
+        Scroll.prototype = {
+            init() {
+                if (this.disc == 'x') {
+                    this.change('width', 'marginLeft')
+
+                } else if (this.disc == 'y') {
+
+                    this.change('height', 'marginTop')
+
+                }
+
+            },
+            change(att1, att2) {
+                this.li_width = parseInt(this.getAttr(att1))
+                this.ul.style[att1] = this.li_width * this.lisLen + 'px'
+
+                setInterval(function () {
+
+                    that.ul.style[att2] = that.index-- + 'px'
+                    if (Math.abs(that.index) >= that.lis[0][that.li_width]) {
+                        that.ul.appendChild(that.ul.firstElementChild)
+                        that.index = 0
+                        that.ul.style[att2] = '0px'
+                    }
+                }, this.speed)
+
+            },
+            getAttr(attr) {
+                if (this.lis[0].currentStyle) {
+                    return this.lis[0].currentStyle[attr]
+                } else {
+                    return getComputedStyle(this.lis[0], null)[attr]
+                }
+            }
+        }
+
+        new Scroll({
+            box: '.box1',
+            disc: 'x',
+            speed: 50
+        })
+        new Scroll({
+            box: '.box2',
+            disc: 'y',
+            speed: 100
+        })
+    </script>
+</body>
+
+</html>
